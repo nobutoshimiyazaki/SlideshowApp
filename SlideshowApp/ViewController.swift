@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     var imageNameArray = [
         "1.jpg",
         "2.jpg",
+        "3.jpg",
         ]
     
     
@@ -35,7 +36,9 @@ class ViewController: UIViewController {
     
     @IBAction func onTapImage(_ sender: Any) {
         // セグエを使用して画面を遷移
-        performSegue(withIdentifier: "result",sender: nil)    }
+        performSegue(withIdentifier: "result",sender: nil)
+        
+    }
     
     
     @IBAction func startView(_ sender: Any) {
@@ -100,21 +103,16 @@ class ViewController: UIViewController {
     /// 表示している画像の番号を元に画像を表示する
     func displayImage() {
         
-        // 画像の名前の配列
-        imageNameArray = [
-            "1.jpg",
-            "2.jpg",
-        ]
         
         // 画像の番号が正常な範囲を指しているかチェック
         
         // 範囲より下を指している場合、最後の画像を表示
         if dispImageNo < 0 {
-            dispImageNo = 1
+            dispImageNo = imageNameArray.count - 1
         }
         
         // 範囲より上を指している場合、最初の画像を表示
-        if dispImageNo > 1 {
+        if dispImageNo > imageNameArray.count - 1 {
             dispImageNo = 0
         }
         
